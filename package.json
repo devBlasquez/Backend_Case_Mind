@@ -1,0 +1,25 @@
+{
+	"name": "Backend_Case_Mind",
+	"version": "1.0.0",
+	"scripts": {
+		"dev": "nodemon src/server.js"
+	},
+	"main": "index.js",
+	"repository": "git@github.com:devBlasquez/Backend_Case_Mind.git",
+	"author": "<mauricio.junior@estudante.ufscar.br>",
+	"license": "MIT",
+	"dependencies": {
+		"bcryptjs": "^2.4.3",
+		"express": "^4.19.2",
+		"jsonwebtoken": "^9.0.2",
+		"mysql2": "^3.9.6",
+		"path": "^0.12.7",
+		"sequelize": "^6.37.3",
+		"yup": "^1.4.0"
+	},
+	"devDependencies": {
+		"nodemon": "^3.1.0",
+		"sequelize-cli": "^6.6.2",
+		"sucrase": "^3.35.0"
+	}
+}
