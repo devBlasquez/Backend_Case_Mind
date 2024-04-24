@@ -1,8 +1,11 @@
-import Product from "../models/Product"
 import * as Yup from "yup"
+import { Request, Response } from "express"
+
+import Product from "../models/Product"
+import { RequestQuery } from "../../@types/request"
 
 class ProductController {
-	async store(req, res) {
+	async store(req: Request, res: Response) {
 		const {
 			name: name,
 			description: description,
@@ -23,7 +26,7 @@ class ProductController {
 		return res.json(product)
 	}
 
-	async updateFile(req, res) {
+	async updateFile(req: Request, res: Response) {
 		const { filename: image_path } = req.file
 
 		const { id: productId } = req.body
@@ -34,7 +37,7 @@ class ProductController {
 		return res.json(newProduct)
 	}
 
-	async updateFields(req, res) {
+	async updateFields(req: Request, res: Response) {
 		const schema = Yup.object().shape({
 			id: Yup.number(),
 			name: Yup.string(),
@@ -60,13 +63,13 @@ class ProductController {
 		return res.json(newProduct)
 	}
 
-	async index(req, res) {
-		const { page = 1 } = req.query
+	async index(req: RequestQuery<{ page: string }>, res: Response) {
+		const { page = "1" } = req.query
 
 		const products = await Product.findAll({
 			order: ["name"],
 			limit: 10,
-			offset: (page - 1) * 10,
+			offset: (Number(page) - 1) * 10,
 		})
 
 		return res.json(products)

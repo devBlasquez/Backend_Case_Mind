@@ -1,8 +1,8 @@
-"use strict"
+import { QueryInterface, DataTypes } from "sequelize"
 
 module.exports = {
-	up: (queryInterface, Sequelize) => {
-		return queryInterface.createTable("products", {
+	up: (queryInterface: QueryInterface, Sequelize: typeof DataTypes) => {
+		return queryInterface.createTable("users", {
 			id: {
 				type: Sequelize.INTEGER,
 				allowNull: false,
@@ -13,21 +13,13 @@ module.exports = {
 				type: Sequelize.STRING,
 				allowNull: false,
 			},
-			description: {
-				type: Sequelize.STRING,
-				allowNull: false,
-			},
-			image_path: {
+			email: {
 				type: Sequelize.STRING,
 				allowNull: false,
 				unique: true,
 			},
-			price: {
-				type: Sequelize.FLOAT,
-				allowNull: false,
-			},
-			amount: {
-				type: Sequelize.INTEGER,
+			password_hash: {
+				type: Sequelize.STRING,
 				allowNull: false,
 			},
 			created_at: {
@@ -41,7 +33,7 @@ module.exports = {
 		})
 	},
 
-	down: (queryInterface) => {
-		return queryInterface.dropTable("products")
+	down: (queryInterface: QueryInterface) => {
+		return queryInterface.dropTable("users")
 	},
 }

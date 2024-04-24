@@ -1,8 +1,11 @@
-import User from "../models/User"
+import { Request, Response } from "express"
 import * as Yup from "yup"
 
+import User from "../models/User"
+import { AuthRequest } from "../../@types/request"
+
 class UserController {
-	async store(req, res) {
+	async store(req: Request, res: Response) {
 		const schema = Yup.object().shape({
 			name: Yup.string().required(),
 			email: Yup.string().email().required(),
@@ -20,7 +23,7 @@ class UserController {
 		return res.json({ id, name, email })
 	}
 
-	async update(req, res) {
+	async update(req: AuthRequest, res: Response) {
 		const schema = Yup.object().shape({
 			name: Yup.string(),
 			email: Yup.string().email(),
@@ -41,8 +44,6 @@ class UserController {
 		const { email, oldPassword } = req.body
 
 		const user = await User.findByPk(req.userId)
-
-		console.log(req.userId)
 
 		if (email != user.email) {
 			const userExists = await User.findOne({ where: { email } })
