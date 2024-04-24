@@ -1,22 +1,7 @@
 import { Sequelize } from "sequelize"
-import User from "../app/models/User"
-import Product from "../app/models/Product"
 
 import databaseConfig from "../config/database"
 
-const models = [User, Product]
+const db = new Sequelize(databaseConfig)
 
-class Database {
-	connection: Sequelize
-
-	constructor() {
-		this.init()
-	}
-
-	init() {
-		this.connection = new Sequelize(databaseConfig)
-		models.map((model) => model.init(this.connection))
-	}
-}
-
-export default new Database()
+export default db
