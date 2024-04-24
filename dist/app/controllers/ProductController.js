@@ -62,8 +62,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var Product_1 = __importDefault(require("../models/Product"));
 var Yup = __importStar(require("yup"));
+var Product_1 = __importDefault(require("../models/Product"));
 var ProductController = /** @class */ (function () {
     function ProductController() {
     }
@@ -150,11 +150,11 @@ var ProductController = /** @class */ (function () {
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        _a = req.query.page, page = _a === void 0 ? 1 : _a;
+                        _a = req.query.page, page = _a === void 0 ? "1" : _a;
                         return [4 /*yield*/, Product_1.default.findAll({
                                 order: ["name"],
                                 limit: 10,
-                                offset: (page - 1) * 10,
+                                offset: (Number(page) - 1) * 10,
                             })];
                     case 1:
                         products = _b.sent();

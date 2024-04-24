@@ -62,8 +62,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var User_1 = __importDefault(require("../models/User"));
 var Yup = __importStar(require("yup"));
+var User_1 = __importDefault(require("../models/User"));
 var UserController = /** @class */ (function () {
     function UserController() {
     }
@@ -122,7 +122,6 @@ var UserController = /** @class */ (function () {
                         return [4 /*yield*/, User_1.default.findByPk(req.userId)];
                     case 2:
                         user = _d.sent();
-                        console.log(req.userId);
                         if (!(email != user.email)) return [3 /*break*/, 4];
                         return [4 /*yield*/, User_1.default.findOne({ where: { email: email } })];
                     case 3:
