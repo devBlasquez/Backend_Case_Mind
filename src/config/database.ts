@@ -1,4 +1,6 @@
-module.exports = {
+import { Options } from "sequelize"
+
+const config: Options = {
 	dialect: "mysql",
 	host: "localhost",
 	username: "root",
@@ -7,6 +9,7 @@ module.exports = {
 	define: {
 		timestamps: true,
 		underscored: true,
-		underscoredAll: true,
 	},
 }
+
+export default config

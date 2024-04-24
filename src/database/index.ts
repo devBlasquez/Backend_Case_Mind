@@ -7,6 +7,8 @@ import databaseConfig from "../config/database"
 const models = [User, Product]
 
 class Database {
+	connection: Sequelize
+
 	constructor() {
 		this.init()
 	}

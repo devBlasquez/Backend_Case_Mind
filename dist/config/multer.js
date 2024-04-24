@@ -12,7 +12,7 @@ exports.default = {
         filename: function (req, product, cb) {
             crypto_1.default.randomBytes(16, function (err, res) {
                 if (err)
-                    return cb(err);
+                    return cb(err, product.filename);
                 return cb(null, res.toString("hex") + (0, path_1.extname)(product.originalname));
             });
         },

@@ -43,7 +43,7 @@ var jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 var util_1 = require("util");
 var auth_1 = __importDefault(require("../../config/auth"));
 exports.default = (function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
-    var authHeader, _a, token, decoded, error_1;
+    var authHeader, _a, token, promisifiedFunction, decoded, error_1;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
@@ -54,7 +54,8 @@ exports.default = (function (req, res, next) { return __awaiter(void 0, void 0, 
                 _b.label = 1;
             case 1:
                 _b.trys.push([1, 3, , 4]);
-                return [4 /*yield*/, (0, util_1.promisify)(jsonwebtoken_1.default.verify)(token, auth_1.default.secret)];
+                promisifiedFunction = (0, util_1.promisify)(jsonwebtoken_1.default.verify);
+                return [4 /*yield*/, promisifiedFunction(token, auth_1.default.secret)];
             case 2:
                 decoded = _b.sent();
                 req.userId = decoded.id;

@@ -1,4 +1,6 @@
-module.exports = {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var config = {
     dialect: "mysql",
     host: "localhost",
     username: "root",
@@ -7,6 +9,6 @@ module.exports = {
     define: {
         timestamps: true,
         underscored: true,
-        underscoredAll: true,
     },
 };
+exports.default = config;

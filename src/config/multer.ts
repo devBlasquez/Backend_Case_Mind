@@ -8,7 +8,7 @@ export default {
 
 		filename: (req, product, cb) => {
 			crypto.randomBytes(16, (err, res) => {
-				if (err) return cb(err)
+				if (err) return cb(err, product.filename)
 				return cb(null, res.toString("hex") + extname(product.originalname))
 			})
 		},
